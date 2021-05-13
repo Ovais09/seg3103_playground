@@ -16,11 +16,11 @@ This code will compile and run the Java and Elixir files. The main functionality
 ## Installation
 Running the Java code:
 
-![Java code](/JavaRunning.png) 
+![Java code](/assets/JavaRunning.png) 
 
 Running the Elixir code:
 
-![Elixir code](ElixirRunning.png)
+![Elixir code](/assets/ElixirRunning.png)
 
 * In order to run the Java code, The user first must download the newmath_java zip file from the SEG 3103 Lab01 section. Next, the user should extract the zip into a folder of the user's choosing. After doing this, the user must download and install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and install a linux distro (I installed Ubuntu on my personal computer). After installing, WSL and Ubuntu, the user must install Java JDK and JRE using the apt package manager. After installing thr various softwares, the user can actually start running the Java code. The user should go to the `newmath_java` folder in the `newmath_java` folder and first compile it using `./bin/compile` then run it using `./bin/run`. 
 * Assuming the user has WSL and a linux distro of their choosing installed, they can then proceed to running the Elxiir code. In order to run Elixir code on their machine, the user has to first install Elixir and Erlang. First, the user should proceed to the [Elixir website](https://elixir-lang.org/install.html#gnulinux) and download install Elixir on WSL. Once they have it installed, they should go to the `newmath_ex` folder in the `newmath_ex` folder and first run `./bin/compile` in the WSL terminal to compile the Elxir file. Finally, the user can run the elicir file by doing `./bin/run` and then do `NewmathEx.div(numerator, denominator)`. 
@@ -31,11 +31,11 @@ Depending on the size of the project, if it is small and simple enough the refer
 ## Tests
 Running the Java Test:
 
-![Java Test](/JavaTest.png)
+![Java Test](/assets/JavaTest.png)
 
 Running the Elxiir Test:
 
-![Elixir Test](/ElixirTest.png)
+![Elixir Test](/assets/ElixirTest.png)
 
 * In order to run the Java test, the user must navigate to the `newmath_java` folder in the `newmath_java` folder and then do `./bin/test
 * To run the Elixir test, the user must navigate to the `newmath_ex` folder in the `newmath_ex` folder and then run `./bin/test`
