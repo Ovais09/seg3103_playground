@@ -46,8 +46,105 @@ void nextDate_tc25(){
     Date date = new Date(2000, 1, 1);
     Date expectedTomorrow = new Date(2000, 1, 2);
     assertEquals(expectedTomorrow, date.nextDate());
-	}
+}
   ```
+  
+  I then managed to acheieve 100% code coverage for the toString() function.  I did this by adding this test to the `Date.java` file: <br>
+  ```java
+@Test
+void nextDate_tc24(){
+    Date date = new Date(2021,5,27);
+    assertEquals("2021/May/27",date.toString());
+}
+```
+
+I then managed to acheieve 100% code coverage for the equals(Object) function. I did this by adding these tests to the `Date.java` file: <br>
+``` java
+@Test
+void nextDate_tc28(){
+    Object obj = new Object();
+    Date date = new Date(2021,5,27);
+    assertFalse(date.equals(obj));
+}
+
+@Test
+void nextDate_tc29(){
+    Date date = new Date(2021,5,27);
+    Date date2 = new Date(2020,4,26);
+    assertFalse(date.equals(date2));
+}
+
+@Test
+void nextDate_tc30(){
+    Date date = new Date(2021,5,27);
+    Date date2 = new Date(2021,4,26);
+    assertFalse(date.equals(date2));
+}
+
+@Test
+void nextDate_tc31(){
+    Date date = new Date(2021,5,27);
+    Date date2 = new Date(2021,5,26);
+    assertFalse(date.equals(date2));
+}
+```
+
+I then managed to acheieve 100% code coverage for the setDay() function. I did this by adding these tests to the `Date.java` file: <br>
+```java
+@Test
+  void nextDate_invalid_tc21() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(1975, 6, 32)
+    );
+  }
+  
+@Test
+void nextDate_invalid_tc22() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2010, 4, 31)
+    );
+}
+
+@Test
+void nextDate_invalid_tc23() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2020, 2, 30)
+    );
+}
+```
+
+I then managed to acheieve 100% branch coverage for the setMonth() function. I did this by adding this tests to the `Date.java` file: <br>
+
+```java
+@Test
+void nextDate_invalid_tc19() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(1458, 15, 12)
+    );
+}
+  ```
+  
+  I was not able to
+  
+  ```java
+@Test
+void nextDate_tc26(){
+    Date today = new Date(2021, 2, 28);
+    Date expectedTomorrow = new Date(2021, 3, 1);
+    assertEquals(expectedTomorrow, today.nextDate());
+}
+
+@Test
+void nextDate_tc27(){
+    Date today = new Date(2020, 2, 28);
+    Date expectedTomorrow = new Date(2020, 2, 29);
+    assertEquals(expectedTomorrow, today.nextDate());
+}
+```
   
 
 After adding some tests, it changed to this: <br> <br> 
