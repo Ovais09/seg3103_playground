@@ -17,12 +17,12 @@ defmodule Grades.Calculator do
      # changed code for question 2.1
     {avg_homework, avg_labs} = avg(homework, labs)
 
-    avg_exams = (midterm + final) / 2
+    #changed code for question 2.4
+    avg_exams = avg_exams(midterm, final)
 
-    num_labs =
-      labs
-      |> Enum.reject(fn mark -> mark < 0.25 end)
-      |> Enum.count()
+    #changed code for question 2.4
+    num_labs = count_labs(labs)
+
 
 
     #fixed the code for question 2.2
@@ -56,12 +56,11 @@ defmodule Grades.Calculator do
     {avg_homework, avg_labs} = avg(homework, labs)
 
 
-    avg_exams = (midterm + final) / 2
+    #changed code for question 2.4
+    avg_exams = avg_exams(midterm, final)
 
-    num_labs =
-      labs
-      |> Enum.reject(fn mark -> mark < 0.25 end)
-      |> Enum.count()
+    #changed code for question 2.4
+    num_labs = count_labs(labs)
 
     #fixed the code for question 2.2
     if failed_to_participate(avg_homework, avg_exams, num_labs) do
@@ -127,6 +126,22 @@ defmodule Grades.Calculator do
   def calculate_grade(avg_labs, avg_homework, midterm, final) do
 
     0.2 * avg_labs +      0.3 * avg_homework +     0.2 * midterm +     0.3 * final
+
+  end
+
+  #function for question 2.4
+  def avg_exams(midterm, final) do
+
+    (midterm + final) / 2
+
+  end
+
+  #function for question 2.4
+  def count_labs(labs) do
+
+    labs
+      |> Enum.reject(fn mark -> mark < 0.25 end)
+      |> Enum.count()
 
   end
 
