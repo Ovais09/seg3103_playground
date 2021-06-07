@@ -5,8 +5,11 @@ defmodule Grades.Calculator do
     # changed code for question 2.1
     {avg_homework, avg_labs} = avg(homework, labs)
 
-    mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+    # changed code for question 2.3
+    mark = calculate_grade(avg_labs, avg_homework, midterm, final)
+
     round(mark * 100)
+
   end
 
   def letter_grade(%{homework: homework, labs: labs, midterm: midterm, final: final}) do
@@ -25,8 +28,11 @@ defmodule Grades.Calculator do
     #fixed the code for question 2.2
     if failed_to_participate(avg_homework, avg_exams, num_labs)  do
       "EIN"
+
     else
-      mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+
+      # changed code for question 2.3
+      mark = calculate_grade(avg_labs, avg_homework, midterm, final)
 
       cond do
         mark > 0.895 -> "A+"
@@ -60,8 +66,11 @@ defmodule Grades.Calculator do
     #fixed the code for question 2.2
     if failed_to_participate(avg_homework, avg_exams, num_labs) do
       0
+
     else
-      mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+
+      # changed code for question 2.3
+      mark = calculate_grade(avg_labs, avg_homework, midterm, final)
 
       cond do
         mark > 0.895 -> 10
@@ -107,10 +116,17 @@ defmodule Grades.Calculator do
 
   end
 
-  #function for question 2.1
+  #function for question 2.2
   def failed_to_participate(avg_homework, avg_exams, num_labs)   do
 
     avg_homework <  0.4  ||  avg_exams  <  0.4  || num_labs  < 3
+
+  end
+
+  #function for question 2.3
+  def calculate_grade(avg_labs, avg_homework, midterm, final) do
+
+    0.2 * avg_labs +      0.3 * avg_homework +     0.2 * midterm +     0.3 * final
 
   end
 
