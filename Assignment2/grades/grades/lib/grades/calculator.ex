@@ -107,7 +107,7 @@ defmodule Grades.Calculator do
 
   end
 
-  #function for question 2.1
+  #function for question 2.2
   def failed_to_participate(avg_homework, avg_exams, num_labs)   do
 
     avg_homework <  0.4  ||  avg_exams  <  0.4  || num_labs  < 3
