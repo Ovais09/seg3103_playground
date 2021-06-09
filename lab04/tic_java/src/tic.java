@@ -2,7 +2,7 @@ package src;
 
 public class tic {
 
-    String [][] defaultBoard = new String [3][3];
+    static String [][] defaultBoard = new String [3][3];
 
     public  String[][] emptyBoard(int rows, int columns){
         String [][] board = new String [rows][columns];
@@ -31,7 +31,22 @@ public class tic {
         }
 
         return defaultBoard;
+    }
 
+    public String positions (boolean player, int row, int column){
+
+        String sign = "_";
+
+        if(player) {
+            sign = "X";
+        }
+        else {
+            sign = "O";
+        }
+
+        tic.defaultBoard[row][column] = sign;
+
+        return defaultBoard[row][column]; 
 
     }
     

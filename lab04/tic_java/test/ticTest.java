@@ -41,4 +41,10 @@ public class ticTest {
         assertArrayEquals(result,object.defaultBoard());
     }
 
+    @Test 
+    void test_boardPositions (){
+        //assertEquals("X", object.positions(true, 0, 1));
+        assertEquals("X", object.positions(false, 2, 0));
+    }
+
 }
