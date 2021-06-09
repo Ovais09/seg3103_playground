@@ -18,5 +18,20 @@ public class tic {
     public int boardSize (int rows, int columns){
         return rows * columns; 
     }
+
+    public String [][] defaultBoard (){
+
+        String [][] defaultBoard = new String [3][3];
+
+        for (int i= 0; i<3; i++){
+            for(int j=0; j<3; j++){
+                defaultBoard[i][j] = "_";
+            }
+        }
+
+        return defaultBoard;
+
+
+    }
     
 }

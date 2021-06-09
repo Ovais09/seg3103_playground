@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import jdk.jfr.Timestamp;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Assert.*;
@@ -30,6 +32,13 @@ public class ticTest {
     @Test
     void test_boardSize (){
         assertEquals(9, object.boardSize(3, 3));
+    }
+
+    @Test
+    void test_defaultBoard (){
+        //String [][] result = {{"_","_","_"}, {"_","_","_"}, {"_","_","_"}};
+        String [][] result = {{"_","_"}, {"_","_","_"}, {"_","_","_"}};
+        assertArrayEquals(result,object.defaultBoard());
     }
 
 }
