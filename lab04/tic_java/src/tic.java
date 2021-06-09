@@ -14,5 +14,9 @@ public class tic {
         return board;
 
     }
+
+    public int boardSize (int rows, int columns){
+        return rows * columns; 
+    }
     
 }

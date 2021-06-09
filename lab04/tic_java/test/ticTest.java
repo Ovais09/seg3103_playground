@@ -17,7 +17,7 @@ public class ticTest {
      tic object = new tic();
 
     @Test 
-    void test (){
+    void test_emptyBoard (){
         // 1 X 1
         // assertEquals("_", object.emptyBoard(1,1));
 
@@ -25,6 +25,11 @@ public class ticTest {
         String [][] result = {{"_","_"}, {"_","_"}};
         assertArrayEquals(result,object.emptyBoard(2,2));
     
-}
+    }
+
+    @Test
+    void test_boardSize (){
+        assertEquals(3, object.boardSize(3, 3));
+    }
 
 }
