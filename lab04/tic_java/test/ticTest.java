@@ -43,8 +43,8 @@ public class ticTest {
 
     @Test 
     void test_boardPositions (){
-        //assertEquals("X", object.positions(true, 0, 1));
-        assertEquals("X", object.positions(false, 2, 0));
+        assertEquals("X", object.positions(true, 0, 1));
+        assertEquals("O", object.positions(false, 2, 0));
     }
 
 }
