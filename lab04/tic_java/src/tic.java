@@ -2,7 +2,7 @@ package src;
 
 public class tic {
 
-    public  String[][] emptyBoard (int rows, int columns){
+    public  String emptyBoard_1X1 (int rows, int columns){
         String [][] board = new String [rows][columns];
 
         for (int i= 0; i<rows; i++){
@@ -11,7 +11,7 @@ public class tic {
             }
         }
 
-        return board;
+        return board[rows-1][columns-1];
 
     }
     

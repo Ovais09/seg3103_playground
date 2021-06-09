@@ -14,7 +14,7 @@ public class ticTest {
 
     @Test 
     void test (){
-        assertEquals("_", object.emptyBoard(1,1));
+        assertEquals("_", object.emptyBoard_1X1(1,1));
     }
     
 }
