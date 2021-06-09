@@ -47,4 +47,9 @@ public class ticTest {
         assertEquals("O", object.positions(false, 2, 0));
     }
 
+    @Test 
+    void test_winner () {
+        assertEquals(true, object.winner());
+    }
+
 }

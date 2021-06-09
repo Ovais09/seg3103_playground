@@ -55,5 +55,17 @@ public class tic {
         return tic.defaultBoard[row][column];
 
     }
+
+    public boolean winner () {
+
+        if (tic.defaultBoard[0][0]== "X" && tic.defaultBoard[0][1]== "X" && tic.defaultBoard[0][2]== "X"){
+            return true;
+        }
+
+        else {
+            return false;
+        }
+
+    }
     
 }
