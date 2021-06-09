@@ -2,6 +2,8 @@ package src;
 
 public class tic {
 
+    String [][] defaultBoard = new String [3][3];
+
     public  String[][] emptyBoard(int rows, int columns){
         String [][] board = new String [rows][columns];
 
@@ -21,7 +23,6 @@ public class tic {
 
     public String [][] defaultBoard (){
 
-        String [][] defaultBoard = new String [3][3];
 
         for (int i= 0; i<3; i++){
             for(int j=0; j<3; j++){
