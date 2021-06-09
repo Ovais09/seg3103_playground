@@ -44,9 +44,15 @@ public class tic {
             sign = "O";
         }
 
-        tic.defaultBoard[row][column] = sign;
+        if(tic.defaultBoard[row][column] == "X" || tic.defaultBoard[row][column] == "O" ) {
+            return "N";
+        }
 
-        return defaultBoard[row][column]; 
+        else {
+            tic.defaultBoard[row][column] = sign; 
+        }
+
+        return tic.defaultBoard[row][column];
 
     }
     
