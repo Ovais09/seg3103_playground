@@ -29,7 +29,7 @@ public class ticTest {
 
     @Test
     void test_boardSize (){
-        assertEquals(3, object.boardSize(3, 3));
+        assertEquals(9, object.boardSize(3, 3));
     }
 
 }
