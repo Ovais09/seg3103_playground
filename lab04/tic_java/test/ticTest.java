@@ -36,8 +36,8 @@ public class ticTest {
 
     @Test
     void test_defaultBoard (){
-        //String [][] result = {{"_","_","_"}, {"_","_","_"}, {"_","_","_"}};
-        String [][] result = {{"_","_"}, {"_","_","_"}, {"_","_","_"}};
+        String [][] result = {{"_","_","_"}, {"_","_","_"}, {"_","_","_"}};
+        
         assertArrayEquals(result,object.defaultBoard());
     }
 
