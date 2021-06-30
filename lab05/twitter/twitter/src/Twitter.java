@@ -1,7 +1,6 @@
 public class Twitter {
 
-  public String loadTweet()
-  {
+  public String loadTweet() {
     try {
       Thread.sleep(4000);
     } catch (InterruptedException e) {}
@@ -18,7 +17,22 @@ public class Twitter {
 
   public boolean isMentionned(String name) {
     String tweet = loadTweet();
-    return tweet.contains("@" + name);
+
+    if (tweet == null) {
+      return false;
+    }
+
+    String tweetV2  = tweet;
+
+    String substringFirst = tweetV2 .substring(0,tweetV2.indexOf("@"));
+
+    String substringFinal = tweetV2.substring(substringFirst.length()+1, tweetV2.length());
+
+
+
+
+    return substringFinal.equals(name);
+
   }
 
 }
