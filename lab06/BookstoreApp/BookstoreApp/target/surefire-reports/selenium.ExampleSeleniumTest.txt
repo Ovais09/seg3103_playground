@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: selenium.ExampleSeleniumTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 20.397 s <<< FAILURE! - in selenium.ExampleSeleniumTest
+test1  Time elapsed: 18.302 s  <<< ERROR!
+org.openqa.selenium.WebDriverException: 
+unknown error: cannot find Chrome binary
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-VSU1KGD', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '5.4.72-microsoft-standard-WSL2', java.version: '11.0.11'
+Driver info: driver.version: ChromeDriver
+remote stacktrace: #0 0x555804677949 <unknown>
+
+	at selenium.ExampleSeleniumTest.setUp(ExampleSeleniumTest.java:36)
+
+test2  Time elapsed: 2.064 s  <<< ERROR!
+org.openqa.selenium.WebDriverException: 
+unknown error: cannot find Chrome binary
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-VSU1KGD', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '5.4.72-microsoft-standard-WSL2', java.version: '11.0.11'
+Driver info: driver.version: ChromeDriver
+remote stacktrace: #0 0x55eba3c83949 <unknown>
+
+	at selenium.ExampleSeleniumTest.setUp(ExampleSeleniumTest.java:36)
+
