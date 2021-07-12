@@ -16,6 +16,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+
+
+
 class ExampleSeleniumTest {
 
   static Process server;
@@ -33,6 +36,10 @@ class ExampleSeleniumTest {
     // driver = new FirefoxDriver();
     // driver = new SafariDriver();
     WebDriverManager.chromedriver().setup();
+
+
+
+
     driver = new ChromeDriver();
 
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -74,6 +81,25 @@ class ExampleSeleniumTest {
     expected = "Bienvenu";
     actual = welcome.getText();
     assertEquals(expected, getWords(actual)[0]);
+  }
+
+  @Test
+  public void test3() {
+    driver.get("http://localhost:8080/admin");
+
+    WebElement username = driver.findElement(By.id("loginId"));
+    username.sendKeys("admin");
+
+    WebElement password = driver.findElement(By.id("loginPasswd"));
+    password.sendKeys("password");
+
+    WebElement signIn = driver.findElement(By.id("loginBtn"));
+    signIn.click();
+
+    String actualUrl="http://localhost:8080/admin";
+    String expectedUrl= driver.getCurrentUrl();
+    assertEquals(expectedUrl, actualUrl);
+
   }
 
   private String[] getWords(String s) {
