@@ -60,7 +60,7 @@ Afterwards, I did `mvn test` and it showed me this in my terminal: <br>
 All of the three tests pass  <br>
 
 
-Next I added another Selenium web driver test which will verify is by setting the user name to "admin" and password to "password" will
+Next I added another Selenium web driver test which will verify if setting the user name to "admin" and password to "password" will
 bring the user to the admin page. <br>
 
 This is the test case : 
