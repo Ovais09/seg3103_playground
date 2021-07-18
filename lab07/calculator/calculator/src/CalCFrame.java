@@ -334,7 +334,8 @@ public double calculate( int oper, double number1, double number2 )
             break;
           case SQRT:
             answer = Math.sqrt( number1 );
-            break;      
+            break;   
+		  default: 
       } // end switch  
       
      return answer;     
