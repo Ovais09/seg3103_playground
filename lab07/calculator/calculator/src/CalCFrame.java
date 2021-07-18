@@ -369,8 +369,8 @@ public void showAnswer( String s )
 //Method clickCheck determines if the user double clicked and returns a boolean
 //value.  If doubleclick is true, the program ignores the input
 //==============================================================================
-public boolean clickCheck( String s ) {
-  if ( s == "" )
+public boolean clickCheck(String s ) {
+  if (s.equals("") )
     doubleclick = true;
   else 
     doubleclick = false;
