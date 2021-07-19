@@ -291,21 +291,7 @@ public void processNumbers() {
   
     // if more than two numbers are being inputted to calculate, this "if" block
     // is accessed
-    else if (morenums) { 
-      
-      if ( equals ) {
-       
-        newoper = oper;
-        morenums = false;
-        firstpress = true;  // if equals is pressed set firstpress to false
-    } // end if             
     
-      num3 = Double.parseDouble(input);
-      answer = calculate( newoper, answer, num3 );      
-      showAnswer( Double.toString(answer) );
-      
-      newoper = oper;             
-   }  // end else if  
 }  // end processNumbers()  
 
 //==============================================================================
