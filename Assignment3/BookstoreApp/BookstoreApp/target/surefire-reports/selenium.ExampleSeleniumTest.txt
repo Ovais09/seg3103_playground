@@ -1,0 +1,102 @@
+-------------------------------------------------------------------------------
+Test set: selenium.ExampleSeleniumTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 2, Errors: 6, Skipped: 0, Time elapsed: 105.725 s <<< FAILURE! - in selenium.ExampleSeleniumTest
+TC3_1  Time elapsed: 1.384 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Successfully added book> but was: <Book with same id already exist>
+	at selenium.ExampleSeleniumTest.TC3_1(ExampleSeleniumTest.java:663)
+
+TC3_2  Time elapsed: 1.454 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Successfully added book> but was: <Book with same id already exist>
+	at selenium.ExampleSeleniumTest.TC3_2(ExampleSeleniumTest.java:712)
+
+TC4_1  Time elapsed: 11.728 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#loginId"}
+  (Session info: chrome=91.0.4472.164)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6RIRGN4', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.164, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\Users\ovaze\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:49825}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e401870a61c115e5cfcbcf6b906e6924
+*** Element info: {Using=id, value=loginId}
+	at selenium.ExampleSeleniumTest.loginAsAdmin(ExampleSeleniumTest.java:1029)
+	at selenium.ExampleSeleniumTest.admDelBook1(ExampleSeleniumTest.java:1062)
+	at selenium.ExampleSeleniumTest.TC4_1(ExampleSeleniumTest.java:800)
+
+TC4_2  Time elapsed: 11.679 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#loginId"}
+  (Session info: chrome=91.0.4472.164)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6RIRGN4', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.164, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\Users\ovaze\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:58447}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: dbfd7c489d005a3ac93ac87bfdfb8a83
+*** Element info: {Using=id, value=loginId}
+	at selenium.ExampleSeleniumTest.loginAsAdmin(ExampleSeleniumTest.java:1029)
+	at selenium.ExampleSeleniumTest.admDelBook1(ExampleSeleniumTest.java:1062)
+	at selenium.ExampleSeleniumTest.TC4_2(ExampleSeleniumTest.java:821)
+
+TC5_1  Time elapsed: 12.591 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#loginId"}
+  (Session info: chrome=91.0.4472.164)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6RIRGN4', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.164, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\Users\ovaze\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:52162}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 3a3c0782fca48c1326e494f1d426d7ec
+*** Element info: {Using=id, value=loginId}
+	at selenium.ExampleSeleniumTest.loginAsAdmin(ExampleSeleniumTest.java:1029)
+	at selenium.ExampleSeleniumTest.admDelBook1(ExampleSeleniumTest.java:1062)
+	at selenium.ExampleSeleniumTest.TC5_1(ExampleSeleniumTest.java:851)
+
+TC6_1  Time elapsed: 11.75 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#loginId"}
+  (Session info: chrome=91.0.4472.164)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6RIRGN4', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.164, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\Users\ovaze\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61845}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: ad61fd90efed64068f1f19bef4f80315
+*** Element info: {Using=id, value=loginId}
+	at selenium.ExampleSeleniumTest.loginAsAdmin(ExampleSeleniumTest.java:1029)
+	at selenium.ExampleSeleniumTest.admDelBook1(ExampleSeleniumTest.java:1062)
+	at selenium.ExampleSeleniumTest.TC6_1(ExampleSeleniumTest.java:888)
+
+TC7_1  Time elapsed: 21.722 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#loginId"}
+  (Session info: chrome=91.0.4472.164)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6RIRGN4', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.164, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\Users\ovaze\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61929}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 6880ced8cbe299fb9dfa5838ee4213b4
+*** Element info: {Using=id, value=loginId}
+	at selenium.ExampleSeleniumTest.loginAsAdmin(ExampleSeleniumTest.java:1029)
+	at selenium.ExampleSeleniumTest.admDelBook1(ExampleSeleniumTest.java:1062)
+	at selenium.ExampleSeleniumTest.TC7_1(ExampleSeleniumTest.java:929)
+
+TC8_2  Time elapsed: 21.924 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#loginId"}
+  (Session info: chrome=91.0.4472.164)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6RIRGN4', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.164, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\Users\ovaze\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:55373}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: f507b8622d4e9e55769c38ef9a206719
+*** Element info: {Using=id, value=loginId}
+	at selenium.ExampleSeleniumTest.loginAsAdmin(ExampleSeleniumTest.java:1029)
+	at selenium.ExampleSeleniumTest.admDelBook1(ExampleSeleniumTest.java:1062)
+	at selenium.ExampleSeleniumTest.TC8_2(ExampleSeleniumTest.java:980)
+

@@ -16,6 +16,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import java.util.Date;
+import java.util.List;
+import java.text.SimpleDateFormat;
+import java.lang.Math;
+
 class ExampleSeleniumTest {
 
   static Process server;
@@ -52,24 +57,953 @@ class ExampleSeleniumTest {
     server.destroy();
   }
 
+  // @Test
+  // void test1() {
+  //   WebElement element = driver.findElement(By.id("title"));
+  //   String expected = "YAMAZONE BookStore";
+  //   String actual = element.getText();
+  //   assertEquals(expected, actual);
+  // }
+
+  // @Test
+  // public void test2() {
+  //   WebElement welcome = driver.findElement(By.cssSelector("p"));
+  //   String expected = "Welcome";
+  //   String actual = welcome.getText();
+  //   assertEquals(expected, getWords(actual)[0]);
+  //   WebElement langSelector = driver.findElement(By.id("locales"));
+  //   langSelector.click();
+  //   WebElement frSelector = driver.findElement(By.cssSelector("option:nth-child(3)"));
+  //   frSelector.click();
+  //   welcome = driver.findElement(By.cssSelector("p"));
+  //   expected = "Bienvenu";
+  //   actual = welcome.getText();
+  //   assertEquals(expected, getWords(actual)[0]);
+  // }
+
+ 
   @Test
-  void test1() {
-    WebElement element = driver.findElement(By.id("title"));
-    String expected = "YAMAZONE BookStore";
-    String actual = element.getText();
-    assertEquals(expected, actual);
+  public void test1() {
+    loginAsAdmin();
+
+    WebElement category = driver.findElement(By.id("addBook-category"));
+    category.sendKeys("Fiction");
+
+    WebElement bookId = driver.findElement(By.id("addBook-id"));
+    bookId.sendKeys("test7635");
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("Hamlet");
+
+    WebElement author = driver.findElement(By.id("addBook-authors"));
+    author.sendKeys("Shakespeare");
+
+    WebElement cost = driver.findElement(By.id("cost"));
+    cost.sendKeys("10.0");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement feedback = driver.findElement(By.id("feedback"));
+
+    String actualMessage = feedback.getText();
+    String expectedMessage = "Successfully added book";
+
+    assertEquals(expectedMessage, actualMessage);
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("Fiction");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    
+  }
+
+ 
+  @Test
+  public void test2() {
+    loginAsAdmin();
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("Hamlet");
+
+    WebElement description = driver.findElement(By.id("longDescription"));
+    description.sendKeys("Very cool!");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement feedback = driver.findElement(By.cssSelector("h2"));
+
+    String actualMessage = feedback.getText();
+    String expectedMessage = "Validation errors";
+
+    assertEquals(expectedMessage, actualMessage);
+
+  }
+
+  
+  @Test
+  public void test3() {
+
+    loginAsAdmin();
+
+    WebElement category = driver.findElement(By.id("addBook-category"));
+    category.sendKeys("Fiction");
+
+    WebElement bookId = driver.findElement(By.id("addBook-id"));
+    bookId.sendKeys("test1234");
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("Hamlet");
+
+    WebElement author = driver.findElement(By.id("addBook-authors"));
+    author.sendKeys("Shakespeare");
+
+    WebElement cost = driver.findElement(By.id("cost"));
+    cost.sendKeys("10.0");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("Fiction");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement feedback = driver.findElement(By.cssSelector("h1"));
+
+    String actualMessage = feedback.getText();
+    String expectedMessage = "We currently have the following items in category 'Fiction'";
+
+    assertEquals(expectedMessage, actualMessage);
+
+    WebElement deleteBtn = driver.findElement(By.id("del-test1234"));
+    deleteBtn.click();
+
+  }
+
+  
+  @Test
+  public void test4() {
+    loginAsAdmin();
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("Fiction");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement feedback = driver.findElement(By.cssSelector("h1"));
+
+    String actualMessage = feedback.getText();
+    String expectedMessage = "We currently have the following items in category 'Fiction'";
+
+    assertEquals(expectedMessage, actualMessage);
+  }
+
+  
+  @Test
+  public void test5() {
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    List<WebElement> rows = driver.findElements(By.xpath("//div[@class='content']/table/tbody/tr"));
+
+    int actualNmbOfBooks = rows.size();
+
+    int expectedNmbOfBooks = 12;
+
+    assertEquals(expectedNmbOfBooks, actualNmbOfBooks);
+
+  }
+
+  
+  @Test
+  public void test6() {
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("Fiction");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    List<WebElement> rows = driver.findElements(By.xpath("//div[@class='content']/table/tbody/tr"));
+
+    int actualNmbOfBooks = rows.size();
+
+    int expectedNmbOfBooks = 5;
+
+    assertTrue(actualNmbOfBooks > expectedNmbOfBooks);
+
+  }
+
+  
+  @Test
+  public void test7() {
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement addToCartBtn = driver.findElement(By.id("order-hall001"));
+    addToCartBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement bookAdded = driver.findElement(By.id("hall001"));
+
+    String actualNmbOfBooksAdded = bookAdded.getAttribute("value");
+
+    String expectedNmbOfBooksAdded = "1";
+
+    assertEquals(expectedNmbOfBooksAdded, actualNmbOfBooksAdded);
+
+    bookAdded.sendKeys("0");
+
+    WebElement updateBtn = driver.findElement(By.className("updatebt"));
+    updateBtn.click();
+
+  }
+
+  
+  @Test
+  public void test8() {
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement addToCartBtn = driver.findElement(By.id("order-hall001"));
+    addToCartBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    List<WebElement> elements = driver.findElements(By.xpath("//div[@class='content']/table/tbody/tr/td"));
+
+    String actualBookId = elements.get(0).getText();
+    String expectedBookId = "hall001";
+
+    String actualDescription = elements.get(1).getText();
+    String expectedDescription = "Core Servlets and JavaServer Pages 2nd Edition (Volume 1)";
+
+    String actualCost = elements.get(2).getText();
+    String expecteCost = "$39.95";
+
+    WebElement bookAdded = driver.findElement(By.id("hall001"));
+
+    String actualNmbOfBooksAdded = bookAdded.getAttribute("value");
+
+    String expectedNmbOfBooksAdded = "1";
+
+    String actualTotalCost = elements.get(4).getText();
+    String expectedTotalCost = "$39.95";
+
+    assertEquals(expectedBookId, actualBookId);
+    assertEquals(expectedDescription, actualDescription);
+    assertEquals(expecteCost, actualCost);
+    assertEquals(expectedNmbOfBooksAdded, actualNmbOfBooksAdded);
+    assertEquals(expectedTotalCost, actualTotalCost);
+
+    bookAdded.clear();
+    bookAdded.sendKeys("0");
+
+    WebElement updateBtn = driver.findElement(By.className("updatebt"));
+    updateBtn.click();
+  }
+
+  
+  @Test
+  public void test9() {
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    List<WebElement> rows = driver.findElements(By.xpath("//div[@class='content']/table/tbody/tr"));
+
+    int actualNmbOfBooks = rows.size();
+
+    int expectedNmbOfBooks = 0;
+
+    assertEquals(expectedNmbOfBooks, actualNmbOfBooks);
+  }
+
+  
+  @Test
+  public void test10() {
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement addToCartBtn = driver.findElement(By.id("order-hall001"));
+    addToCartBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement bookAdded = driver.findElement(By.id("hall001"));
+
+    bookAdded.clear();
+    bookAdded.sendKeys("0");
+
+    WebElement updateBtn = driver.findElement(By.className("updatebt"));
+    updateBtn.click();
+
+    WebElement newTotalCost = driver.findElement(By.id("tothall001"));
+
+    String actualNewTotalCost = newTotalCost.getText();
+    String expectedNewTotalCost = "$0.00";
+
+    assertEquals(expectedNewTotalCost, actualNewTotalCost);
+
+  }
+
+  
+  @Test
+  public void test11() {
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement addToCartBtn = driver.findElement(By.id("order-hall001"));
+    addToCartBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement bookAdded = driver.findElement(By.id("hall001"));
+
+    bookAdded.clear();
+    bookAdded.sendKeys("1.5");
+
+    WebElement updateBtn = driver.findElement(By.className("updatebt"));
+    updateBtn.click();
+
+    WebElement newTotalCost = driver.findElement(By.id("tothall001"));
+
+    String actualNewTotalCost = newTotalCost.getText();
+    String expectedNewTotalCost = "$39.95";
+
+    assertEquals(expectedNewTotalCost, actualNewTotalCost);
+  }
+
+  
+  @Test
+  public void test12(){
+    
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement addToCartBtn = driver.findElement(By.id("order-hall001"));
+    addToCartBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement bookAdded = driver.findElement(By.id("hall001"));
+
+    bookAdded.clear();
+    bookAdded.sendKeys("2");
+
+    WebElement updateBtn = driver.findElement(By.className("updatebt"));
+    updateBtn.click();
+
+    WebElement checkoutBtn = driver.findElement(By.name("checkout"));
+    checkoutBtn.click();
+
+    WebElement dateOfOrder = driver.findElement(By.id("order_date"));
+    WebElement totalPrice = driver.findElement(By.id("order_total"));
+    WebElement taxes = driver.findElement(By.id("order_taxes"));
+    WebElement shippingFees = driver.findElement(By.id("order_shipping"));
+
+    String actualDateOfOrder =  dateOfOrder.getText();
+    String actualTaxes = taxes.getText();
+    String actualShippingFees = shippingFees.getText();
+    String actualTotalPrice = totalPrice.getText();
+
+    Date date = new Date();
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+    String expectedDateOfOrder = formatter.format(date);
+
+    assertEquals(expectedDateOfOrder, actualDateOfOrder);
+
+    Double calculateTaxes = Math.round((0.13 * (39.95 * 2)) * 100.0) / 100.0;
+    String expectedTaxes = "$" + calculateTaxes;
+
+    assertEquals(expectedTaxes, actualTaxes);
+
+    String expectedShippingFees = "$14.00";
+
+    assertEquals(expectedShippingFees, actualShippingFees);
+
+    
+    // String expectedTotalPrice = "$" + calculateTotalPrice;
+
+    String expectedTotalPrice = "$" + "104.28"; 
+
+    assertEquals(expectedTotalPrice, actualTotalPrice);
+  
+  }
+  
+  @Test
+  public void test13() {
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement checkoutBtn = driver.findElement(By.name("checkout"));
+    checkoutBtn.click();
+
+    WebElement dateOfOrder = driver.findElement(By.id("order_date"));
+    WebElement totalPrice = driver.findElement(By.id("order_total"));
+    WebElement taxes = driver.findElement(By.id("order_taxes"));
+    WebElement shippingFees = driver.findElement(By.id("order_shipping"));
+
+    String actualDateOfOrder =  dateOfOrder.getText();
+    String actualTaxes = taxes.getText();
+    String actualShippingFees = shippingFees.getText();
+    String actualTotalPrice = totalPrice.getText();
+
+    Date date = new Date();
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+    String expectedDateOfOrder = formatter.format(date);
+
+    assertEquals(expectedDateOfOrder, actualDateOfOrder);
+    String expectedTaxes = "$0.00";
+
+    assertEquals(expectedTaxes, actualTaxes);
+
+    String expectedShippingFees = "$10.00";
+
+    assertEquals(expectedShippingFees, actualShippingFees);
+
+    String expectedTotalPrice = "$10.00";
+
+    assertEquals(expectedTotalPrice, actualTotalPrice);
+  }
+
+  
+  @Test
+  public void test14(){
+    loginAsAdmin();
+
+    WebElement category = driver.findElement(By.id("addBook-category"));
+    category.sendKeys("Fiction");
+
+    WebElement bookId = driver.findElement(By.id("addBook-id"));
+    bookId.sendKeys("test1231");
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("Hamlet");
+
+    WebElement author = driver.findElement(By.id("addBook-authors"));
+    author.sendKeys("Shakespeare");
+
+    WebElement cost = driver.findElement(By.id("cost"));
+    cost.sendKeys("10.0");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("Fiction");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement deleteBtn = driver.findElement(By.id("del-test1231"));
+    deleteBtn.click();
+
+    List<WebElement> rows = driver.findElements(By.xpath("//div[@class='content']/table/tbody/tr"));
+
+    int nmbOfBooks = rows.size();
+
+    boolean bookAsBeenDeleted = false;
+    for (int i = 1; i <= nmbOfBooks; i++) {
+      WebElement bookTitle =  driver.findElement(By.xpath("//div[@class='content']/table/tbody/tr[" + i + "]/td[1]"));
+      String temp = bookTitle.getText();
+      if(temp.equals("Hamlet")){
+        bookAsBeenDeleted = false;
+          break;
+      }
+    } 
+    assertFalse(bookAsBeenDeleted);;
+  }
+
+  
+  @Test
+  public void test15(){
+    loginAsAdmin();
+
+    String actualUrl = "http://localhost:8080/admin";
+    String expectedUrl = driver.getCurrentUrl();
+    assertEquals(expectedUrl, actualUrl);
+
+    WebElement category = driver.findElement(By.id("addBook-category"));
+    category.sendKeys("Fiction");
+
+    WebElement bookId = driver.findElement(By.id("addBook-id"));
+    bookId.sendKeys("test1234");
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("Hamlet");
+
+    WebElement author = driver.findElement(By.id("addBook-authors"));
+    author.sendKeys("Shakespeare");
+
+    WebElement cost = driver.findElement(By.id("cost"));
+    cost.sendKeys("10.0");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement feedback = driver.findElement(By.id("feedback"));
+
+    String actualMessage = feedback.getText();
+    String expectedMessage = "Successfully added book";
+
+    assertEquals(expectedMessage, actualMessage);
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("Fiction");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement deleteBtn = driver.findElement(By.id("del-test1234"));
+    deleteBtn.click();
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  @Test
+  public void TC1_1(){
+    loginAsAdmin();
+    String actualUrl = "http://localhost:8080/admin";
+    String expectedUrl = driver.getCurrentUrl();
+    assertEquals(expectedUrl, actualUrl);
   }
 
   @Test
-  public void test2() {
+  public void TC1_2(){
+    driver.get("http://localhost:8080/admin");
+
+    WebElement username = driver.findElement(By.id("loginId"));
+    username.sendKeys("test");
+
+    WebElement password = driver.findElement(By.id("loginPasswd"));
+    password.sendKeys("test");
+
+    WebElement signIn = driver.findElement(By.id("loginBtn"));
+    signIn.click();
+
+    String actualUrl = "http://localhost:8080/login?error";
+    String expectedUrl = driver.getCurrentUrl();
+    assertEquals(expectedUrl, actualUrl);
+
+    WebElement newUsername = driver.findElement(By.id("loginId"));
+    newUsername.sendKeys("admin");
+
+    WebElement newPassword = driver.findElement(By.id("loginPasswd"));
+    newPassword.sendKeys("password");
+
+    WebElement newSignIn = driver.findElement(By.id("loginBtn"));
+    newSignIn.click();
+
+    String newActualUrl = "http://localhost:8080/admin";
+    String newExpectedUrl = driver.getCurrentUrl();
+    assertEquals(newExpectedUrl, newActualUrl);
+
+  }
+
+  @Test
+  public void TC2_1(){
+    loginAsAdmin();
+    
+    WebElement signOutForm = driver.findElement(By.xpath("//div[@class='menu']/form[2]"));
+    signOutForm.submit();
+
+    String newActualUrl = "http://localhost:8080/login?logout";
+    String newExpectedUrl = driver.getCurrentUrl();
+    assertEquals(newExpectedUrl, newActualUrl);
+
+  }
+
+  @Test
+  public void TC3_1(){
+    loginAsAdmin();
+
+    WebElement category = driver.findElement(By.id("addBook-category"));
+    category.sendKeys("test");
+
+    WebElement bookId = driver.findElement(By.id("addBook-id"));
+    bookId.sendKeys("test121");
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("test");
+
+    WebElement author = driver.findElement(By.id("addBook-authors"));
+    author.sendKeys("test");
+
+    WebElement cost = driver.findElement(By.id("cost"));
+    cost.sendKeys("10.0");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement feedback = driver.findElement(By.id("feedback"));
+
+    String actualMessage = feedback.getText();
+    String expectedMessage = "Successfully added book";
+
+    assertEquals(expectedMessage, actualMessage);
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("test");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement deleteBtn = driver.findElement(By.id("del-test123"));
+    deleteBtn.click();
+  }
+
+  @Test
+  public void TC3_2(){
+    loginAsAdmin();
+
+    WebElement bookId = driver.findElement(By.id("addBook-id"));
+    bookId.sendKeys("test113");
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("test");
+
+    WebElement author = driver.findElement(By.id("addBook-authors"));
+    author.sendKeys("test");
+
+    WebElement cost = driver.findElement(By.id("cost"));
+    cost.sendKeys("10.0");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement feedback = driver.findElement(By.cssSelector("h2"));
+
+    String actualMessage = feedback.getText();
+    String expectedMessage = "Validation errors";
+
+    assertEquals(expectedMessage, actualMessage);
+    
+    WebElement category = driver.findElement(By.id("addBook-category"));
+    category.sendKeys("test");
+
+    WebElement newAddBtn = driver.findElement(By.name("addBook"));
+    newAddBtn.click();
+
+    WebElement newFeedback = driver.findElement(By.cssSelector("h2"));
+
+    String newActualMessage = newFeedback.getText();
+    String newExpectedMessage = "Successfully added book";
+
+    assertEquals(newExpectedMessage, newActualMessage);
+
+    WebElement search = driver.findElement(By.id("search"));
+    search.sendKeys("test");
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement deleteBtn = driver.findElement(By.id("del-test123"));
+    deleteBtn.click();
+  }
+
+  @Test
+  public void TC3_3(){
+    loginAsAdmin();
+
+    WebElement category = driver.findElement(By.id("addBook-category"));
+    category.sendKeys("category");
+
+    WebElement bookId = driver.findElement(By.id("addBook-id"));
+    bookId.sendKeys("id9876");
+
+    WebElement title = driver.findElement(By.id("addBook-title"));
+    title.sendKeys("sheep");
+
+    WebElement author = driver.findElement(By.id("addBook-authors"));
+    author.sendKeys("Sigward");
+
+    WebElement cost = driver.findElement(By.id("cost"));
+    cost.sendKeys("15.0");
+
+    WebElement addBtn = driver.findElement(By.name("addBook"));
+    addBtn.click();
+
+    WebElement addBtn2 = driver.findElement(By.name("addBook"));
+    addBtn2.click();
+
+    WebElement newFeedback = driver.findElement(By.cssSelector("h2"));
+
+    String newActualMessage = newFeedback.getText();
+    String neweExpectedMessage = "Book with same id already exist";
+
+    assertEquals(neweExpectedMessage, newActualMessage);
+
+    WebElement bookId3 = driver.findElement(By.id("addBook-id"));
+    bookId3.clear();
+    bookId3.sendKeys("sheep12");
+
+    WebElement addBtn3 = driver.findElement(By.name("addBook"));
+    addBtn3.click();
+
+    WebElement feedback = driver.findElement(By.cssSelector("h2"));
+
+    String ActualMessage = feedback.getText();
+    String ExpectedMessage = "Successfully added book";
+
+    assertEquals(ExpectedMessage, ActualMessage);
+
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement deleteBtn = driver.findElement(By.id("del-sheep12"));
+    deleteBtn.click();
+
+    driver.navigate().refresh();
+
+    WebElement deleteBtn2 = driver.findElement(By.id("del-id9876"));
+    deleteBtn2.click();
+
+  }
+
+  @Test
+	public void TC4_1()
+	{
+		admAddBook1();
+
+		WebElement search = driver.findElement(By.id("search"));
+		search.sendKeys("CAT1");
+
+		WebElement searchBt = driver.findElement(By.id("searchBtn"));
+		searchBt.click();
+
+		String expected = "We currently have the following items in category";
+		String actual = driver.findElement(By.tagName("h1")).getText();
+		boolean bool = actual.contains(expected);
+
+		admDelBook1();
+
+		assertTrue(bool);
+	}
+
+	
+	@Test
+	public void TC4_2()
+	{
+		admAddBook1();
+
+		WebElement searchBt = driver.findElement(By.id("searchBtn"));
+		searchBt.click();
+
+		String expected = "We currently have the following items in category";
+		String actual = driver.findElement(By.tagName("h1")).getText();
+		
+
+		boolean bool = actual.contains(expected);
+
+		admDelBook1();
+
+		assertTrue(bool);
+	}
+
+	@Test
+	public void TC4_3()
+	{
+		loginAsAdmin();
+
+		WebElement search = driver.findElement(By.id("search"));
+		search.sendKeys("CAT");
+
+		WebElement searchBt = driver.findElement(By.id("searchBtn"));
+		searchBt.click();
+
+		String expected = "Sorry";
+		String actual = driver.findElement(By.tagName("h1")).getText();
+		assertTrue(actual.contains(expected));
+	}
+
+  @Test
+	public void TC5_1() throws InterruptedException
+	{
+		admAddBook1();
+		TimeUnit.SECONDS.sleep(1);
+		admDelBook1();
+
+		List<WebElement> tdList = driver.findElements(By.tagName("td"));
+		boolean bool = true;
+		for (int i = 0; i < tdList.size(); i++)
+		{
+			List<WebElement> list = driver.findElements(By.tagName("td"));
+			if (list.size() > tdList.size() && i > tdList.size())
+			{
+				i = tdList.size();
+			}
+			try
+			{
+				if (list.get(i).getAttribute("id").contains("ID1111"))
+				{
+					bool = false;
+					break;
+				}
+			}
+			catch (Exception e)
+			{
+			}
+		}
+		assertTrue(bool);
+	}
+
+  @Test
+	public void TC6_1()
+	{
+		admAddBook1();
+
+		cusAddBook1Go2Cart();
+
+		String expected = "1";
+		String actual = driver.findElement(By.id("ID1111")).getAttribute("value");
+
+		admDelBook1();
+
+		assertEquals(expected, actual);
+	}
+
+  @Test
+  public void TC6_2(){
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement addToCartBtn = driver.findElement(By.id("order-hall001"));
+    addToCartBtn.click();
+    addToCartBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement bookAdded = driver.findElement(By.id("hall001"));
+
+    String actualNmbOfBooksAdded = bookAdded.getAttribute("value");
+
+    String expectedNmbOfBooksAdded = "2";
+
+    assertEquals(expectedNmbOfBooksAdded, actualNmbOfBooksAdded);
+
+    bookAdded.sendKeys("0");
+
+    WebElement updateBtn = driver.findElement(By.className("updatebt"));
+    updateBtn.click();
+  }
+
+  @Test
+	public void TC7_1()
+	{
+		admAddBook1();
+
+		driver.get("http://localhost:8080");
+		driver.get("http://localhost:8080/orderPage");
+
+		boolean bool = cartIsEmpty();
+
+		admDelBook1();
+
+		assertTrue(bool);
+	}
+
+  @Test
+  public void TC8_1(){
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement addToCartBtn = driver.findElement(By.id("order-hall001"));
+    addToCartBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement bookAdded = driver.findElement(By.id("hall001"));
+
+    bookAdded.clear();
+    bookAdded.sendKeys("2");
+
+    WebElement updateBtn = driver.findElement(By.className("updatebt"));
+    updateBtn.click();
+
+    WebElement newTotalCost = driver.findElement(By.id("tothall001"));
+
+    String actualNewTotalCost = newTotalCost.getText();
+    String expectedNewTotalCost = "$79.90";
+
+    assertEquals(expectedNewTotalCost, actualNewTotalCost);
+  }
+
+  @Test
+	public void TC8_2()
+	{
+		admAddBook1();
+
+		cusAddBook1Go2Cart();
+
+		WebElement inputBox = driver.findElement(By.id("ID1111"));
+		inputBox.clear();
+		inputBox.sendKeys("0");
+		WebElement updateBt = driver.findElement(By.name("updateOrder"));
+		updateBt.click();
+		WebElement searchBt = driver.findElement(By.id("searchBtn"));
+		searchBt.click();
+		WebElement cartBt = driver.findElement(By.id("cartLink"));
+		cartBt.click();
+
+		boolean bool = cartIsEmpty();
+
+		admDelBook1();
+
+		assertTrue(bool);
+	}
+
+  @Test
+  private void TC9_1(){
+    WebElement searchBtn = driver.findElement(By.id("searchBtn"));
+    searchBtn.click();
+
+    WebElement goToCartBtn = driver.findElement(By.id("cartLink"));
+    goToCartBtn.click();
+
+    WebElement checkoutBtn = driver.findElement(By.name("checkout"));
+    checkoutBtn.click();
+
+    String newActualUrl = "http://localhost:8080/checkout";
+    String newExpectedUrl = driver.getCurrentUrl();
+    assertEquals(newExpectedUrl, newActualUrl);
+  }
+
+  
+  @Test
+  public void TC10_1() {
     WebElement welcome = driver.findElement(By.cssSelector("p"));
     String expected = "Welcome";
     String actual = welcome.getText();
     assertEquals(expected, getWords(actual)[0]);
+
     WebElement langSelector = driver.findElement(By.id("locales"));
     langSelector.click();
+
     WebElement frSelector = driver.findElement(By.cssSelector("option:nth-child(3)"));
     frSelector.click();
+
     welcome = driver.findElement(By.cssSelector("p"));
     expected = "Bienvenu";
     actual = welcome.getText();
@@ -79,4 +1013,83 @@ class ExampleSeleniumTest {
   private String[] getWords(String s) {
     return s.split("\\s+");
   }
+
+  private void loginAsAdmin() {
+
+    driver.get("http://localhost:8080/admin");
+
+    WebElement username = driver.findElement(By.id("loginId"));
+    username.sendKeys("admin");
+
+    WebElement password = driver.findElement(By.id("loginPasswd"));
+    password.sendKeys("password");
+
+    WebElement signIn = driver.findElement(By.id("loginBtn"));
+    signIn.click();
+  }
+
+  public void admAddBook1()
+	{
+		loginAsAdmin();
+
+		WebElement cat = driver.findElement(By.id("addBook-category"));
+		cat.sendKeys("CAT1");
+		WebElement id = driver.findElement(By.id("addBook-id"));
+		id.sendKeys("ID1111");
+		WebElement title = driver.findElement(By.id("addBook-title"));
+		title.sendKeys("TITLE1");
+		WebElement author = driver.findElement(By.id("addBook-authors"));
+		author.sendKeys("AUTHOR1");
+		WebElement dscp = driver.findElement(By.id("longDescription"));
+		dscp.sendKeys("DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION");
+		WebElement cost = driver.findElement(By.id("cost"));
+		cost.sendKeys("100");
+
+		WebElement addBt = driver.findElement(By.name("addBook"));
+		addBt.click();
+	}
+
+  public void admDelBook1()
+	{
+		loginAsAdmin();
+
+		driver.get("http://localhost:8080/admin/catalog");
+		WebElement delBt = driver.findElement(By.id("del-ID1111"));
+		delBt.click();
+	}
+
+  public void cusAddBook1Go2Cart()
+	{
+		driver.get("http://localhost:8080");
+
+		WebElement search = driver.findElement(By.id("search"));
+		search.sendKeys("CAT1");
+
+		WebElement searchBt = driver.findElement(By.id("searchBtn"));
+		searchBt.click();
+
+		WebElement addCartBt = driver.findElement(By.id("order-ID1111"));
+		addCartBt.click();
+
+		WebElement cartBt = driver.findElement(By.id("cartLink"));
+		cartBt.click();
+	}
+
+  public boolean cartIsEmpty()
+	{
+		boolean isEmpty = false;
+		try
+		{
+			WebElement box = driver.findElement(By.id("ID1111"));
+		}
+		catch (Exception e)
+		{
+			
+			isEmpty = true;
+		}
+
+		return isEmpty;
+	}
+
+
 }
